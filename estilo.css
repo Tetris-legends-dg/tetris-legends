@@ -1,0 +1,92 @@
+/** ÍNDICE
+   0 - General
+   1 - Header (logo, título y panel de usuario)
+   2 - Main container
+       2.1 - Últimas noticias
+             2.1.1 Noticia principal
+             2.1.2 Noticias secundarias
+   3 - Aside
+   4 - Footer
+*/
+
+@font-face {
+    font-family: 'Block Stock Regular';
+    src: url('blockstock.ttf');
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+html {
+    background: #222;
+    font-size: 16px;
+}
+
+header {
+    display: flex;
+    height: 4rem;
+    background: #444;
+    border-bottom: 0.1rem solid #aaf;
+    box-shadow: 0 0.1rem 0.4rem #aaf;
+}
+header h1 {
+    font-family: 'Block Stock Regular';
+    font-weight: normal;
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+    margin: 0;
+    font-size: 2rem;
+    line-height: 4rem;
+    text-shadow: 0.2rem 0.2rem black;
+}
+
+
+header h1 span:nth-child(1), header h1 span:nth-child(6), header h1 span:nth-child(12) { color: #6d6; }
+header h1 span:nth-child(2), header h1 span:nth-child(7), header h1 span:nth-child(10) { color: #ffa; }
+header h1 span:nth-child(3), header h1 span:nth-child(5), header h1 span:nth-child(13) { color: #f66; }
+header h1 span:nth-child(8), header h1 span:nth-child(3) { color: #48f; }
+header h1 span:nth-child(4), header h1 span:nth-child(9), header h1 span:nth-child(11) { color: #a6a; }
+
+nav {
+    display: flex;
+    vertical-align: top;
+    width: 35%;
+    transform: skew(-20deg);
+    font-weight: bold;
+}
+
+nav a {
+    line-height: 4rem;
+    background: #4477ee;
+    padding: 0 1rem;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    border-right: 3px solid #aaf;
+    text-shadow: 0.1rem 0.1rem black;
+}
+nav a:first-child {
+    border-left: 3px solid #aaf;
+}
+
+nav a.active {
+    background: #ff6666;
+}
+
+nav a:hover:not(.active) {
+    background: #cc4;
+}
+
+#user-panel {
+    line-height: 4rem;
+    width: 25%;
+}
