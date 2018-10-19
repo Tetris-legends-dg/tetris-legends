@@ -10,8 +10,8 @@
 
 <body>
 
-
-
+<canvas class="fondo" id="fondo-cuadricula"></canvas>
+<canvas class="fondo" id="awbg-canvas"></canvas>
 
 <header>
     <img id="site-logo" src="../images/logo.png" alt="">
@@ -19,11 +19,12 @@
         <span>T</span><span>E</span><span>T</span><span>R</span><span>I</span><span>S</span>
         <span>L</span><span>E</span><span>G</span><span>E</span><span>N</span><span>D</span><span>S</span>
     </a></h1>
-
+    
+    <div id="hamburger" tabindex="0" onclick="toggleMenu(this)"><div></div><div></div><div></div></div>
     <nav>
         <a href="#" class="current-page active">Inicio</a><!--
      --><a href="#">Noticias</a><!--
-     --><a href="#">Equipos</a>
+     --><a href="#">Jugadores</a>
     </nav>
 
     <div id="user-panel">
@@ -32,9 +33,6 @@
     </div>
 
 </header>
-
-
-
 
 
 
@@ -53,7 +51,7 @@
                 </div>
             </article>
             <div id="noticias-secundarias">
-                <article>
+                <article class="preview">
                     <a href="#"><img class="thumbnail" src="../images/cartasbocabajo.jpg" alt=""></a>
                     <h1><a href="#">Noticia secundaria 1</a></h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, molestias, debitis! Voluptatibus
@@ -62,16 +60,14 @@
                         accusantium,
                         quasi aliquam aperiam rem necessitatibus.</p>
                 </article><!--
-                 -->
-                <article>
+             --><article class="preview">
                     <a href="#"><img class="thumbnail" src="../images/baraja.jpg" alt=""></a>
                     <h1><a href="#">Noticia secundaria 2</a></h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                         Facere optio cumque cum quo id suscipit deleniti laboriosam ipsa delectus.
                         Alias dolorum sequi quo sint nisi? Illum porro ipsum hic a.</p><!--
-                 --></article><!--
-                 -->
-                <article>
+             --></article><!--
+             --><article class="preview">
                     <a href="#"><img class="thumbnail" src="../images/cartaenpie.jpg" alt=""></a>
                     <h1><a href="#">Noticia secundaria 3</a></h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -87,17 +83,19 @@
     </div>
     <aside>
         <div class="widget anuncio">
-
+            <div class="widget-title">Publicidad</div>
+            <div class="widget-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique facilis necessitatibus beatae quibusdam blanditiis minus assumenda sit vero ex illum nobis totam iure suscipit porro facere labore, odio quo alias.</div>
         </div>
         <div class="widget partido-directo">
-
+            <div class="widget-title">¡En directo!</div>
+            <div class="widget-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque modi porro, obcaecati labore eum consequuntur, blanditiis magni tenetur eligendi inventore pariatur atque ullam architecto delectus, ratione placeat. Officia, optio minus.</div>
         </div>
     </aside>
 </div>
 <footer>
-    <p>Esto es el footer</p>
+    <p>Esto es el footer hasta que lo dejemos bonito ;)</p>
 </footer>
-
+   
     <script src="./js/awbg-blocks.js"></script>
     <script src="./js/scripts.js"></script>
 </body>
