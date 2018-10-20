@@ -449,15 +449,14 @@ footer {
     aside {
         width: 100%;
         flex-flow: row wrap;
-        height: auto;
         max-width: none;
         justify-content: space-between;
+        align-items: flex-start;
     }
     
     aside .widget {
         width: 49%;
     }
-    
 }
 
 /* Extrasmall devices */
@@ -536,6 +535,10 @@ footer {
     
     aside .widget.anuncio {
         order: 10; /* 1º en pantallas amplias, último en pequeñas */
+    }
+    
+    aside .widget {
+        width: 100%;
     }
 }
 
