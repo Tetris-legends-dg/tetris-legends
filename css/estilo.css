@@ -430,12 +430,60 @@ aside {
 }
 
 .widget.partido-directo {
-    background: #311; 
+    background: #311;
 }
 .widget.partido-directo .titulo {
     background: #611; 
 }
 
+.widget.partido-directo .widget-content { 
+
+   padding: 0.5rem;
+}
+.widget.partido-directo img {
+    width: 5rem;
+    width: 20%;
+    border: 0.1rem solid #696;
+    border-radius: 1rem 1rem 0 1rem;
+}
+
+.widget.partido-directo .vs {
+    font-size: 3rem;
+    font-family: "Block Stock Regular", "Helvetica";
+    text-align: center;
+    margin-top: 1rem;
+    color: #ff6;
+}
+
+.widget.partido-directo .oponente {
+    display: flex;
+    align-items: flex-end;
+}
+
+.widget.partido-directo .oponente .username {
+    font-size: 1.75rem;
+    border: 0.1rem solid #696;
+    border-left: none;
+    padding: 0.3rem;
+    border-radius: 0 1rem 1rem 0;
+    width: 80%;
+    background: #121;
+}
+
+.widget.partido-directo .oponente:last-child {
+    flex-direction: row-reverse;
+}
+.widget.partido-directo .oponente:last-child .username {
+    border-radius: 1rem 0 0 1rem;
+    text-align: right;
+    border: 0.1rem solid #559;
+    border-right: none;
+    background: #112;
+}
+.widget.partido-directo .oponente:last-child img {
+    border: 0.1rem solid #559;
+    border-radius: 1rem 1rem 1rem 0;
+}
 
 /******** [2.3] Página de login *********/
 #login {
@@ -566,6 +614,10 @@ footer {
     .tabla-ranking>.top-user:nth-child(odd) {
         border-right: none;
     }
+    
+    .widget.partido-directo .oponente .username {
+        font-size: 1rem;
+    }
 
 }
 
@@ -622,6 +674,11 @@ footer {
     
     aside .widget {
         width: 49%;
+    }
+    
+    
+    aside .widget.anuncio {
+        order: 10; /* 1º en pantallas amplias, último en pequeñas */
     }
 }
 
@@ -713,10 +770,6 @@ footer {
     #noticias-secundarias article {
         width: 100%;
         margin-bottom: 0.75rem;
-    }
-    
-    aside .widget.anuncio {
-        order: 10; /* 1º en pantallas amplias, último en pequeñas */
     }
     
     aside .widget {
