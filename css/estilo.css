@@ -10,9 +10,12 @@
             | - Últimas noticias
                  | - Noticia principal
                  | - Noticias secundarias
-            | - Top 3 de la semana
+            | - Top 6 de la semana
        [2.2] - Aside
+       [2.3] - Página de login
    [3] - Footer
+
+
 
    [BP] - Breakpoints
 */
@@ -56,6 +59,7 @@ html {
     background: #000;
     font-size: 16px;
     color: white;
+    height: 100%;
 }
 
 h1 {
@@ -64,6 +68,21 @@ h1 {
     font-size: 2.5rem;
 }
 
+.centrador {
+    text-align: center;
+}
+
+.boton, button {
+    background: #333;
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+    border: 0.2rem solid #777;
+    cursor: pointer;
+}
+
+.boton:hover, .boton:focus, button:hover, button:focus {
+    background: #226;
+}
 /*#####################################
 ####         [1]  HEADER           ####
 #######################################*/
@@ -73,7 +92,7 @@ header {
     background: #0004;
     width: 100%;
     height: auto;
-    align-items: center;
+    align-items: flex-end;
     border-bottom: 0.1rem solid #a44;
     box-shadow: 0 0.2rem 0.5rem black;
     flex-wrap: wrap;
@@ -132,7 +151,7 @@ nav a {
     text-transform: uppercase;
     text-shadow: 0.1rem 0.1rem black;
     font-family: "Helvetica";
-    line-height: 2rem;
+    line-height: 2.5rem;
 }
 
     
@@ -155,10 +174,33 @@ nav a:hover:not(.active), nav a:focus:not(.active) {
     width: 33.3%;
 }
 
-#user-panel a {
-    font-size: 0.9rem;
+#user-panel>a {
+    line-height: 3rem;
     padding-right: 1rem;
     font-family: "Helvetica";
+}
+
+#user-info {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    height: 3rem;
+    text-align: right;
+    margin-right: 0.5rem;
+}
+
+#user-avatar>img {
+    height: 3rem;
+    border: 0.1rem solid #f88;
+    vertical-align: middle;
+}
+
+#logout {
+    color: #faa;
+}
+
+#logout:hover, #logout:focus {
+    text-decoration: underline;
 }
 
 /*#######################################
@@ -274,7 +316,7 @@ section {
 }
 
 
-/********** Top 3 de la semana **********/
+/********** Top 6 de la semana **********/
 
 #ranking-semanal {
     padding: 1rem 0.1rem 0 0.1rem;
@@ -338,6 +380,8 @@ section {
 }
 
 
+
+
 /************** [2.2] Aside *************/
 aside {
     flex: 0 0 22.5rem;  /* 360px */
@@ -390,6 +434,47 @@ aside {
 }
 .widget.partido-directo .titulo {
     background: #611; 
+}
+
+
+/******** [2.3] Página de login *********/
+#login {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    height: 100%;
+}
+
+#login input, #login button  {
+    background: #222;
+    border: 0.2rem solid #777;
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+}
+
+#login input:focus {
+    background: #151;
+}
+
+#login button {
+    margin: 1rem 0;
+}
+#login h1 {
+    font-family: "Block Stock Regular";
+}
+
+.caja-login {
+    max-width: 25rem;  /** 400px */ 
+    border-radius: 1rem;
+    text-align: right;
+}
+
+.caja-login label {
+    display: block;
+    margin-bottom: 0.5rem;
 }
 
 
@@ -547,6 +632,7 @@ footer {
         top: 0;
         background: #000e;
         z-index: 1000;
+        align-items: center;
     }
     header h1 {
         width: 80%;
@@ -596,6 +682,21 @@ footer {
         background: #747;
     }
     
+    
+    #user-panel>#user-info {
+        width: 80%;
+    }
+    #user-panel>#user-info>a {
+        background: none;
+        text-align: right;
+    }
+    #user-panel>#user-avatar {
+        width: 20%;
+        background: none;
+    }
+    #user-panel.usuario-logueado {
+        flex-direction: row;
+    }
         
     #hamburger:focus + nav, #hamburger.active + nav, 
     #hamburger:focus ~ #user-panel, #hamburger.active ~ #user-panel {

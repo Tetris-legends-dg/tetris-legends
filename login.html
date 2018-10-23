@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tetris Legends</title>
+
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+
+<canvas class="fondo" id="fondo-cuadricula"></canvas>
+<canvas class="fondo" id="awbg-canvas"></canvas>
+
+<section id="login">
+    <h1><a href="./index.html" class="texto-multicolor">
+        <span>T</span><span>E</span><span>T</span><span>R</span><span>I</span><span>S</span>
+        <span>L</span><span>E</span><span>G</span><span>E</span><span>N</span><span>D</span><span>S</span>
+    </a></h1>
+    
+    <form class="caja-login" onsubmit="return loginHardcoded()">
+        <label>Nombre <input type="text" required></label>
+        <label>Contraseña <input type="password" required></label>
+        
+        <div class="centrador"><button type="submit">Iniciar sesión</button></div>
+    </form>
+    <a class="boton" href="./index.html">&lt; Volver a inicio</a>
+</section>
+
+<footer>
+    <p>Esto es el footer hasta que lo dejemos bonito ;)</p>
+</footer>
+   
+    <!-- Cargar scripts del fondo una vez se haya cargado la página -->
+    <script src="./js/awbg-blocks.js"></script>
+    <script src="./js/scripts.js"></script>
+</body>
+
+</html>

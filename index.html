@@ -14,7 +14,6 @@
 <canvas class="fondo" id="awbg-canvas"></canvas>
 
 <header>
-    <img id="site-logo" src="../images/logo.png" alt="">
     <h1><a href="./index.html" class="texto-multicolor">
         <span>T</span><span>E</span><span>T</span><span>R</span><span>I</span><span>S</span>
         <span>L</span><span>E</span><span>G</span><span>E</span><span>N</span><span>D</span><span>S</span>
@@ -22,16 +21,23 @@
     
     <div id="hamburger" tabindex="0" onclick="toggleMenu(this)"><div></div><div></div><div></div></div>
     <nav>
-        <a href="#" class="current-page active">Inicio</a><!--
-     --><a href="#">Noticias</a><!--
-     --><a href="#">Jugadores</a>
+        <a href="#" class="current-page active">Inicio</a>
+        <a href="#">Noticias</a>
+        <a href="#">Jugadores</a>
     </nav>
 
     <div id="user-panel">
-        <a href="#">Iniciar sesión</a><!--
-     --><a href="#">Regístrate</a>
+        <a href="./login.html">Iniciar sesión</a>
+        <a href="#">Regístrate</a>
     </div>
-
+<!--
+    <div id="user-panel" class="usuario-logueado">
+        <div id="user-info">
+            <a href="#" id="username">Zixiong</a>
+            <a href="#" id="logout">Cerrar sesión</a>
+        </div>
+        <a href="#" id="user-avatar"><img src="img/Zixiong.jpg" alt="Zixiong"></a>
+    </div>  -->
 </header>
 
 
@@ -98,7 +104,7 @@
                 </div>
                 <div class="top-user">
                     <div class="posicion">4</div>
-                    <img src="./img/AlexVega.png" alt="Foto de Javier Sánchez Villar">
+                    <img src="./img/AlexVega.png" alt="Foto de Alexander Vega">
                     <div class="username">Alexander Vega</div>
                     <div class="puntuacion">861997</div>
                 </div>
@@ -110,7 +116,7 @@
                 </div>
                 <div class="top-user">
                     <div class="posicion">6</div>
-                    <img src="./img/JeffMoore.png" alt="Foto de Javier Sánchez Villar">
+                    <img src="./img/JeffMoore.jpg" alt="Foto de Jeff Moore">
                     <div class="username">Jeff Moore</div>
                     <div class="puntuacion">821481</div>
                 </div>

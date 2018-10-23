@@ -7,6 +7,28 @@ function toggleMenu(boton) {
 }
 
 
+function controlSesionHardcoded () {
+    if (localStorage.getItem("usuario") !== null) {
+        var userpanel = document.getElementById("user-panel");
+        if (userpanel !== null) {
+            userpanel.classList.toggle("usuario-logueado");
+            document.getElementById("user-panel").innerHTML = '<div id="user-info"><a href="#" id="username">Zixiong</a><a href="#" id="logout" onclick="logoutHardcoded()">Cerrar sesión</a></div><a href="#" id="user-avatar"><img src="img/Zixiong.jpg" alt="Zixiong"></a>';
+        }
+    }
+}
+
+function loginHardcoded() {
+    localStorage.setItem("usuario", true);
+    window.location = "./index.html"
+    return false;
+}
+
+function logoutHardcoded() {
+    localStorage.removeItem("usuario");
+    location.reload();
+}
+
+controlSesionHardcoded();
 /**********************************************************************
 *       DE AQUÍ PABAJO TODO LO RELATIVO A LA GESTIÓN DEL FONDO        *
 ***********************************************************************/
