@@ -8,19 +8,14 @@ function toggleMenu(boton) {
 
 
 function controlSesionHardcoded () {
-    if (localStorage.getItem("usuario") !== null) {
+    var usuario = localStorage.getItem("usuario");
+    if (usuario !== null) {
         var userpanel = document.getElementById("user-panel");
         if (userpanel !== null) {
             userpanel.classList.toggle("usuario-logueado");
-            document.getElementById("user-panel").innerHTML = '<div id="user-info"><a href="#" id="username">Zixiong</a><a href="#" id="logout" onclick="logoutHardcoded()">Cerrar sesión</a></div><a href="#" id="user-avatar"><img src="img/Zixiong.jpg" alt="Zixiong"></a>';
+            document.getElementById("user-panel").innerHTML = '<div id="user-info"><a href="#" id="username">' + usuario +'</a><a href="#" id="logout" onclick="logoutHardcoded()">Cerrar sesión</a></div><a href="#" id="user-avatar"><img src="img/nouser.gif" alt="Imagen del usuario"></a>';
         }
     }
-}
-
-function loginHardcoded() {
-    localStorage.setItem("usuario", true);
-    window.location = "./index.html"
-    return false;
 }
 
 function logoutHardcoded() {
@@ -29,6 +24,8 @@ function logoutHardcoded() {
 }
 
 controlSesionHardcoded();
+
+
 /**********************************************************************
 *       DE AQUÍ PABAJO TODO LO RELATIVO A LA GESTIÓN DEL FONDO        *
 ***********************************************************************/
@@ -48,8 +45,8 @@ controlSesionHardcoded();
  * diferencia con y sin el script activo.
  *
  * Se ha utilizado el módulo blocks de Awesome Backgrounds, un futuro 
- * conjunto de librerías y herramientas para generar fondos que estoy 
- * creando mientras profundizo en el aprendizaje de JavaScript.
+ * conjunto de librerías y herramientas para generar gadgets visuales 
+ * que estoy creando mientras profundizo en el aprendizaje de JavaScript.
  */
 var b = new awbgblocks(60);
 
@@ -58,14 +55,12 @@ var resizeFondo = function () {
     fondo.height = window.innerHeight;
     
     var ctx = fondo.getContext('2d');
-    
-    var grises = ['#000', '#050505', '#080808'];
-    
     var bSize = b.getBlockSize();
     
     for(var i = 0; i < fondo.height + bSize; i += bSize) {
-        for(var j = 0; j < fondo.width + bSize; j += bSize) {;
-            ctx.fillStyle = grises[Math.floor(randomBetween(0, grises.length))];
+        for(var j = 0; j < fondo.width + bSize; j += bSize) {
+            var gris = randomBetween(0, 9);
+            ctx.fillStyle = "rgb(" + gris + ', ' + gris + ', ' + gris + ")";
             ctx.fillRect(j+2,i+2, bSize-4, bSize-4);
         }
     }
@@ -134,7 +129,6 @@ function randomPosition(xMin, xMax, yMin, yMax) {
 };
 
 function newRandomShape() {
-    
     var shapeType = types[Math.floor(randomBetween(0, types.length))];
     sm.newShape(shapeType, randomPosition(0,58,-4,-4), randomColor());
 }

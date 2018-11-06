@@ -13,19 +13,36 @@
 <canvas class="fondo" id="fondo-cuadricula"></canvas>
 <canvas class="fondo" id="awbg-canvas"></canvas>
 
+
 <section id="login">
     <h1><a href="./index.html" class="texto-multicolor">
         <span>T</span><span>E</span><span>T</span><span>R</span><span>I</span><span>S</span>
         <span>L</span><span>E</span><span>G</span><span>E</span><span>N</span><span>D</span><span>S</span>
     </a></h1>
-    
-    <form class="caja-login" onsubmit="return loginHardcoded()">
-        <label>Nombre <input type="text" required></label>
-        <label>Contraseña <input type="password" required></label>
+    <div class="cargando"><div></div><div></div><div></div><div></div></div>
+
+    <form id="caja-login" onsubmit="return controlFormulario()">
+        <label for="nombre" >Nombre</label>
+        <input id="nombre" onchange="comprobarNombreUsado()" type="text" pattern="[A-Za-z0-9_-]{2,15}" maxlength="14" required>
+        <p class="error">El nombre introducido ya está en uso</p>
+        <label for="email" class="registro">Email</label>
+        <input id="email" type="email" class="registro">
         
-        <div class="centrador"><button type="submit">Iniciar sesión</button></div>
+        <label for="password" maxlength="15">Contraseña</label>
+        <input id="password" onchange="comprobarPasswords()" name="password" type="password" required>
+        <p class="error">Nombre de usuario o contraseña incorrectos</p>
+        
+        <label for="confirmar-pass"  class="registro">Repite contraseña</label>
+        <input id="confirmar-pass" onchange="comprobarPasswords()" type="password" class="registro">
+        <p class="error">Las contraseñas introducidas no coinciden</p>
+        
+        <input id="aceptar-tos" class="registro" type="checkbox">
+        <label for="aceptar-tos" class="registro"> Renuncio voluntariamente a mi alma</label>
+        
+        <button type="submit">Iniciar sesión</button>
+        <p><span id="pregunta" class="aviso">¿Aún no registrado?</span> <a href="#?register">¡Hazlo aquí!</a></p>
     </form>
-    <a class="boton" href="./index.html">&lt; Volver a inicio</a>
+    <a href="./index.html">&lt; Volver a inicio</a>
 </section>
 
 <footer>
@@ -34,7 +51,9 @@
    
     <!-- Cargar scripts del fondo una vez se haya cargado la página -->
     <script src="./js/awbg-blocks.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
     <script src="./js/scripts.js"></script>
+    <script src="./js/login.js"></script>
 </body>
 
 </html>

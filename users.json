@@ -1,0 +1,20 @@
+{
+    "zixiong" : {
+        "score": 839412,
+        "passwd": 1234,
+        "email": "zixion@asd.com"
+    },
+    
+    "javier" : {
+        "score": 839412,
+        "passwd": 5678,
+        "email": "javi@asd.com"
+    },
+    
+    "alex" : {
+        "score": 839412,
+        "passwd": 9012,
+        "email": "alex@asd.com"
+    }
+    
+}

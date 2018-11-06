@@ -83,6 +83,8 @@ h1 {
 .boton:hover, .boton:focus, button:hover, button:focus {
     background: #226;
 }
+
+.aviso { color: #cc3; }
 /*#####################################
 ####         [1]  HEADER           ####
 #######################################*/
@@ -496,7 +498,7 @@ aside {
 /******** [2.3] Página de login *********/
 #login {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
@@ -509,9 +511,12 @@ aside {
     color: white;
     border-radius: 0.5rem;
     padding: 0.2rem;
+    display: block;
+    width: 100%;
 }
 
-#login input:focus {
+#login input:focus, #login button:focus, 
+#login input:hover, #login button:hover {
     background: #151;
 }
 
@@ -523,18 +528,47 @@ aside {
     text-align: center;
 }
 
-.caja-login {
+#caja-login {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
     max-width: 25rem;  /** 400px */ 
     border-radius: 1rem;
-    text-align: right;
 }
 
-.caja-login label {
+#caja-login label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
+    margin-top: 0.75rem;
 }
 
+#login .registro {
+    display: none; /* Todos lo relacionado al registro, oculto por defecto */
+}
 
+#caja-login p {
+    font-size: 1.25rem;
+    text-align: center;
+}
+#caja-login a {
+    color: #77f;
+}
+#caja-login a:hover {
+    text-decoration: underline;
+}
+
+#caja-login #email, #caja-login>#confirmar-pass {
+    display: none;
+}
+#aceptar-tos {
+    font-size: 1rem;
+}
+
+#caja-login .error {
+    color: #faa;
+    font-weight: bolder;
+    display: none;
+}
 /************** [3] Footer  *************/
 footer {
     position: relative;
@@ -799,6 +833,59 @@ footer {
 
 
 
+.cargando {
+    display: none;
+    position: relative;
+    width: 11rem;
+    height: 8rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.cargando div {
+    display: inline-block;
+    position: absolute;
+    left: 1rem;
+    width: 2rem;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.cargando div:nth-child(1) {
+    left: 0rem;
+    animation-delay: -0.36s;
+    background: #ff8;
+}
+
+.cargando div:nth-child(2) {
+    left: 3rem;
+    animation-delay: -0.24s;
+    background: #f88;
+}
+
+.cargando div:nth-child(3) {
+    left: 6rem;
+    animation-delay: -0.12s;
+    background: #8d8;
+}
+
+.cargando div:nth-child(4) {
+    left: 9rem;
+    animation-delay: 0;
+    background: #88d;
+}
+
+@keyframes lds-facebook {
+    0% {
+        top: 1rem;
+        height: 8rem;
+    }
+
+    50%,
+    100% {
+        top: 3rem;
+        height: 4rem;
+    }
+}
 
 
 
