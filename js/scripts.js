@@ -25,6 +25,14 @@ function logoutHardcoded() {
 
 controlSesionHardcoded();
 
+/** Noticias */
+var paginas = [];
+var paginaActual = 1;
+function cargarNoticias(boton) {
+    //TO DO
+}
+
+
 
 /**********************************************************************
 *       DE AQUÍ PABAJO TODO LO RELATIVO A LA GESTIÓN DEL FONDO        *
