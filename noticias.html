@@ -39,51 +39,54 @@
         <div id="page-content">
             <section id="noticias">
                 <article>
-                    <a href="#"><img src="img/jonasCampeonCTWC2017_croped_480x480.jpg" alt=""></a>
+                    <a class="thumbnail" href="#"><img src="img/jonasCampeonCTWC2017_croped.jpg" alt=""></a>
                     <div class="contenido">
                         <h1><a href="#">Jonas Neubauer, otra vez campeón</a></h1>
                         <p>Jonas Neubauer sigue dominando la escena competitiva de Tetris clásico. El estadounidense gana por séptima vez el
                             Classic Tetris World Championship, donde sólo ha sido derrotado una vez en la historia del campeonato.</p>
-                        <a href="./noticia.html" class="boton leer-mas"><span>L</span><span>E</span><span>E</span><span>R</span> <span>M</span><span>Á</span><span>S</span></a>
-
                     </div>
+                    <a href="./noticia.html" class="boton leer-mas"><span>L</span><span>E</span><span>E</span><span>R</span> <span>M</span><span>Á</span><span>S</span></a>
                 </article>
                 <article>
-                    <a href="#"><img class="thumbnail" src="img/mundoTetris_croped.jpg" alt=""></a>
+                    <a class="thumbnail"  href="#"><img src="img/mundoTetris_croped.jpg" alt=""></a>
                     <div class="contenido">
                         <h1><a href="#">La tierra no es esférica, es un Tetris clásico</a></h1>
                         <p>Y si te comes el clickbait es pa' pegarte.</p>
-                        <a href="./noticia.html" class="boton leer-mas"><span>L</span><span>E</span><span>E</span><span>R</span> <span>M</span><span>Á</span><span>S</span></a>
-
                     </div>
+                    <a href="./noticia.html" class="boton leer-mas"><span>L</span><span>E</span><span>E</span><span>R</span> <span>M</span><span>Á</span><span>S</span></a>
                 </article>
                 <article>
-                    <a href="#"><img class="thumbnail" src="img/tetrisTopVentas_croped.jpg" alt=""></a>
+                    <a class="thumbnail"  href="#"><img src="img/tetrisTopVentas_croped.jpg" alt=""></a>
                     <div class="contenido">
                         <h1><a href="#">Tetris sigue siendo el juego más vendido</a></h1>
                         <p>Minecraft le pisa los talones en el puesto, pero en 2018 Tetris sigue en cabeza. Analizamos
                             qué otros juegos amenazan al lider con quitarle su puesto.</p>
-                        <a href="./noticia.html" class="boton leer-mas"><span>L</span><span>E</span><span>E</span><span>R</span> <span>M</span><span>Á</span><span>S</span></a>
-
                     </div>
+                    <a href="./noticia.html" class="boton leer-mas"><span>L</span><span>E</span><span>E</span><span>R</span> <span>M</span><span>Á</span><span>S</span></a>
                 </article>
                 <article>
-                    <a href="#"><img class="thumbnail" src="img/TetrisGhost_croped.jpg" alt=""></a>
+                    <a class="thumbnail"  href="#"><img src="img/TetrisGhost_croped.jpg" alt=""></a>
                     <div class="contenido">
                         <h1><a href="#">¿Tetrominós fantasma para jugadores nuevos?</a></h1>
                         <p>Analizamos hasta qué punto los tetrominós fantasmas (aquellos que
                             indican dónde va a caer el actual) son buenos para los jugadores
                             novatos.</p>
-                        <a href="./noticia.html" class="boton leer-mas"><span>L</span><span>E</span><span>E</span><span>R</span> <span>M</span><span>Á</span><span>S</span></a>
                     </div>
+                    <a href="./noticia.html" class="boton leer-mas"><span>L</span><span>E</span><span>E</span><span>R</span> <span>M</span><span>Á</span><span>S</span></a>
                 </article>
+                
+                <div class="cargando" style="display: block;"><div></div><div></div><div></div><div></div></div>
+
                 <div id="paginacion">
-                    <div class="desactivado">&lt;</div>
+                   <!-- <div class="desactivado">&lt;</div>
                     <div class="actual">1</div>
+                    <div id="moreLeft">...</div>
                     <div>2</div>
                     <div>3</div>
-                    <div>...</div>
-                    <div>&gt;</div>
+                    <div>4</div>
+                    <div id="moreRight">...</div>
+                    <div>15</div>
+                    <div>&gt;</div>-->
                 </div>
             </section>
         </div>
@@ -129,6 +132,7 @@
     
     <!-- Cargar scripts del fondo una vez se haya cargado la página -->
     <script src="./js/awbg-blocks.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
     <script src="./js/scripts.js"></script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+{
+    "total" : 5,
+    "noticias" : [
+        {
+            "thumbnail": "jonasCampeonCTWC2017_croped.jpg",
+            "permalink": "noticia.html",
+            "title": "Jonas Neubauer, otra vez campeón",
+            "content": "Jonas Neubauer sigue dominando la escena competitiva de Tetris clásico. El estadounidense gana por séptima vez el Classic Tetris World Championship, donde sólo ha sido derrotado una vez en la historia del campeonato."
+        },
+        {
+            "thumbnail": "mundoTetris_croped.jpg",
+            "permalink": "noticia.html",
+            "title": "La tierra no es esférica, es un Tetris clásico",
+            "content": "Jonas Neubauer sigue dominando la escena competitiva de Tetris clásico. El estadounidense gana por séptima vez el Classic Tetris World Championship, donde sólo ha sido derrotado una vez en la historia del campeonato."
+        },
+        {
+            "thumbnail": "tetrisTopVentas_croped.jpg",
+            "permalink": "noticia.html",
+            "title": "Tetris sigue siendo el juego más vendido",
+            "content": "Jonas Neubauer sigue dominando la escena competitiva de Tetris clásico. El estadounidense gana por séptima vez el Classic Tetris World Championship, donde sólo ha sido derrotado una vez en la historia del campeonato."
+        },
+        {
+            "thumbnail": "TetrisGhost_croped.jpg",
+            "permalink": "noticia.html",
+            "title": "¿Tetrominós fantasma para jugadores nuevos?",
+            "content": "Jonas Neubauer sigue dominando la escena competitiva de Tetris clásico. El estadounidense gana por séptima vez el Classic Tetris World Championship, donde sólo ha sido derrotado una vez en la historia del campeonato."
+        }
+    ]
+}

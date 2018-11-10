@@ -28,9 +28,111 @@ controlSesionHardcoded();
 /** Noticias */
 var paginas = [];
 var paginaActual = 1;
-function cargarNoticias(boton) {
-    //TO DO
+
+
+function pedirNoticias(pagina) {
+    
+    $("#noticias article").remove();
+    $(".cargando").show();
+    window.scrollTo(0,0);
+    
+    // El timeout es para simular tiempo de carga.
+    // se quitará cuando se implemente con servidor real.
+    setTimeout( function() {
+    $.ajax({
+        url: "./api/noticias.json",
+        type: "GET",
+        dataType: "json",
+        data: { page: pagina, pagelimit: 4 },
+        success: function(data) {
+            cargarPagina(data);
+            actualizarPaginacion(pagina, data.total);
+            $(".cargando").hide();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("ERROR AL CARGAR NOTICIAS (TO DO: mostrar el error en página, no con este alert)")   
+            alert(jqXHR);
+            alert(textStatus);
+            alert(errorThrown);
+        }
+    });
+    }, 1000);
 }
+
+function cargarPagina(datos) {
+    var cont = $("#noticias");
+    datos.noticias.reverse();
+    datos.noticias.forEach(function(noticia) {
+        
+        var thumbnail = '<a class="thumbnail" href="' + noticia.permalink +
+                        '"><img src="./img/' + noticia.thumbnail + '"></a>'
+        var title = '<h1><a href="' + noticia.permalink + '">' + noticia.title + "</a></h1>"
+        var content = "<p>" + noticia.content + "</p>"
+        
+        var article = '<article>' + thumbnail + 
+                        '<div class="contenido">' + title + content + '</div>' +
+                        '<a href="' + noticia.permalink + '" class="boton leer-mas">LEER MÁS</a>'
+        '</article>'
+        
+        cont.prepend(article);
+    });
+    
+    cont.find("article").hide().fadeIn(500);
+}
+
+function actualizarPaginacion(pagina, total) {
+    var paginador = $("#paginacion");
+    paginador.html("");
+    pagina = parseInt(pagina); // previene posibles tratamientos de cadenas.
+    if (pagina != 1) { // Botón "anterior" o "<"
+        paginador.append('<div id="previous">&lt;</div>');
+    }
+    
+    if (pagina > 2) { // Botón "..." izquierdo.
+        paginador.append('<div>1</div>'); 
+    }
+    if ( pagina >= 4 ) { paginador.append('<div id="moreLeft">...</div>'); }
+    if ( pagina != 1) { 
+        paginador.append('<div>' + (pagina - 1) + '</div>');
+    }
+    paginador.append('<div class="actual">' + pagina + '</div>');
+    if ( pagina != total) { paginador.append('<div>' + (pagina + 1) + '</div>'); }
+    if ( pagina < total - 2 ) { 
+        paginador.append('<div id="moreRight">...</div>');
+    }
+    if ( pagina < total - 1) {
+        paginador.append('<div>' + total + '</div>');
+    }
+    if ( pagina != total ) { paginador.append('<div id="next">&gt;</div>'); }
+    
+    paginador.find("div").each(function() {
+        var b = this.innerHTML;
+        switch (b) {
+            case '&lt;' :
+                $(this).click(function() {
+                   pedirNoticias(pagina-1);
+                });
+                break;
+            case '&gt;' :
+                $(this).click(function() {
+                   pedirNoticias(pagina+1);
+                });
+                break;
+            case '...' :
+                $(this).click(function() {
+                    pedirNoticias (
+                        this.id === 'moreLeft' ? (pagina-3) : (pagina+3), 
+                    );
+                });
+                break;
+            default :
+                $(this).click(function() {
+                   pedirNoticias(b); 
+                });
+        }
+    })
+}
+pedirNoticias(1);
 
 
 
