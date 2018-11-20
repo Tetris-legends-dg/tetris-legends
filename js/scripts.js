@@ -30,54 +30,68 @@ var paginas = [];
 var paginaActual = 1;
 
 
-function pedirNoticias(pagina) {
-    
-    $("#noticias article").remove();
-    $(".cargando").show();
-    window.scrollTo(0,0);
+function pedirPaginaNoticias(pagina, callback) {
     
     // El timeout es para simular tiempo de carga.
     // se quitará cuando se implemente con servidor real.
     setTimeout( function() {
-    $.ajax({
-        url: "./api/noticias.json",
-        type: "GET",
-        dataType: "json",
-        data: { page: pagina, pagelimit: 4 },
-        success: function(data) {
-            cargarPagina(data);
-            actualizarPaginacion(pagina, data.total);
-            $(".cargando").hide();
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            alert("ERROR AL CARGAR NOTICIAS (TO DO: mostrar el error en página, no con este alert)")   
-            alert(jqXHR);
-            alert(textStatus);
-            alert(errorThrown);
-        }
-    });
+        $.ajax({
+            url: "./api/noticias.json",
+            type: "GET",
+            dataType: "json",
+            data: { page: pagina, pagelimit: 4 },
+            success: function(data) {
+                $(".cargando").hide();
+                callback(data);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert("ERROR AL CARGAR NOTICIAS (TO DO: mostrar el error en página, no con este alert)")   
+                alert(jqXHR);
+                alert(textStatus);
+                alert(errorThrown);
+            }
+        });
     }, 1000);
+    
+    
 }
 
+function _templateNoticia(noticia, indexPage) { 
+    noticia.thumbnail = noticia.thumbnail + (indexPage ? ".jpg" : "_croped.jpg");
+    
+    var thumbnail = '<a class="thumbnail" href="' + noticia.permalink +
+                        '"><img src="./img/' + noticia.thumbnail + '"></a>'
+    var title = '<h1><a href="' + noticia.permalink + '">' + noticia.title + "</a></h1>"
+    var content = "<p>" + noticia.content + "</p>"
+    
+    var article = '<article>' + thumbnail + 
+                    '<div class="contenido">' + title + content + '</div>';
+    
+    if (!indexPage) {
+        article += '<a href="' + noticia.permalink + '" class="boton leer-mas">LEER MÁS</a>';
+    }
+            
+    article += '</article>';
+    
+    return article;
+}
 function cargarPagina(datos) {
     var cont = $("#noticias");
     datos.noticias.reverse();
     datos.noticias.forEach(function(noticia) {
-        
-        var thumbnail = '<a class="thumbnail" href="' + noticia.permalink +
-                        '"><img src="./img/' + noticia.thumbnail + '"></a>'
-        var title = '<h1><a href="' + noticia.permalink + '">' + noticia.title + "</a></h1>"
-        var content = "<p>" + noticia.content + "</p>"
-        
-        var article = '<article>' + thumbnail + 
-                        '<div class="contenido">' + title + content + '</div>' +
-                        '<a href="' + noticia.permalink + '" class="boton leer-mas">LEER MÁS</a>'
-        '</article>'
-        
-        cont.prepend(article);
+        cont.prepend(_templateNoticia(noticia, false));
     });
     
     cont.find("article").hide().fadeIn(500);
+    actualizarPaginacion(datos.pagina, datos.total);
+}
+function cargarNoticiasInicio(datos) {
+    var noticiaPrincipal = _templateNoticia(datos.noticias[0], true);
+    $("#ultimas-noticias").prepend(noticiaPrincipal).find("article").attr("id", "noticia-principal").hide().fadeIn(500);
+    
+    for(var i = 1; i < 4; i++) {
+        $("#noticias-secundarias").append(_templateNoticia(datos.noticias[i], true)).hide().fadeIn(500);
+    }
 }
 
 function actualizarPaginacion(pagina, total) {
@@ -85,54 +99,61 @@ function actualizarPaginacion(pagina, total) {
     paginador.html("");
     pagina = parseInt(pagina); // previene posibles tratamientos de cadenas.
     if (pagina != 1) { // Botón "anterior" o "<"
-        paginador.append('<div id="previous">&lt;</div>');
+        paginador.append('<div data-paginacion="-1">&lt;</div>');
     }
     
     if (pagina > 2) { // Botón "..." izquierdo.
         paginador.append('<div>1</div>'); 
     }
-    if ( pagina >= 4 ) { paginador.append('<div id="moreLeft">...</div>'); }
+    if ( pagina >= 4 ) { paginador.append('<div data-paginacion="-3">...</div>'); }
     if ( pagina != 1) { 
         paginador.append('<div>' + (pagina - 1) + '</div>');
     }
     paginador.append('<div class="actual">' + pagina + '</div>');
     if ( pagina != total) { paginador.append('<div>' + (pagina + 1) + '</div>'); }
     if ( pagina < total - 2 ) { 
-        paginador.append('<div id="moreRight">...</div>');
+        paginador.append('<div data-paginacion="3">...</div>');
     }
     if ( pagina < total - 1) {
         paginador.append('<div>' + total + '</div>');
     }
-    if ( pagina != total ) { paginador.append('<div id="next">&gt;</div>'); }
+    if ( pagina != total ) { paginador.append('<div data-paginacion="1">&gt;</div>'); }
     
     paginador.find("div").each(function() {
         var b = this.innerHTML;
         switch (b) {
             case '&lt;' :
-                $(this).click(function() {
-                   pedirNoticias(pagina-1);
-                });
-                break;
             case '&gt;' :
-                $(this).click(function() {
-                   pedirNoticias(pagina+1);
-                });
-                break;
             case '...' :
                 $(this).click(function() {
-                    pedirNoticias (
-                        this.id === 'moreLeft' ? (pagina-3) : (pagina+3), 
-                    );
+                   pedirPaginaNoticias(pagina + parseInt($(this).attr("data-paginacion")), cargarPagina);                    
+                   _limpiarYMostrarCargando()
+                    
                 });
                 break;
             default :
                 $(this).click(function() {
-                   pedirNoticias(b); 
+                   pedirPaginaNoticias(b, cargarPagina);
+                   _limpiarYMostrarCargando();
                 });
         }
     })
 }
-pedirNoticias(1);
+
+function _limpiarYMostrarCargando() {
+    $("article").remove();
+    $(".cargando").show();
+    window.scrollTo(0,0);
+}
+
+
+if ( window.location.href.indexOf("/noticias.html") != -1 ) {
+    _limpiarYMostrarCargando();
+    pedirPaginaNoticias(1, cargarPagina);
+} else if (  window.location.href.indexOf("/index.html") != -1 ) {
+    $(".cargando").show();
+    pedirPaginaNoticias(1, cargarNoticiasInicio);
+}
 
 
 
@@ -169,7 +190,7 @@ var resizeFondo = function () {
     
     for(var i = 0; i < fondo.height + bSize; i += bSize) {
         for(var j = 0; j < fondo.width + bSize; j += bSize) {
-            var gris = randomBetween(0, 9);
+            var gris = randomBetween(0, 20);
             ctx.fillStyle = "rgb(" + gris + ', ' + gris + ', ' + gris + ")";
             ctx.fillRect(j+2,i+2, bSize-4, bSize-4);
         }

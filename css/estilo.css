@@ -620,6 +620,7 @@ footer {
     font-size: 2rem;
     border-bottom: 0.3rem solid #0005;
     padding-bottom: 0.5rem;
+    text-align: left;
 }
 
 #noticias article img {
@@ -683,7 +684,7 @@ footer {
     padding: 0.5rem;
 }
 
-#noticias .cargando {
+#page-content .cargando {
     margin: 5rem auto;
 }
 
@@ -807,7 +808,7 @@ footer {
         right: -1.5rem;
         bottom: -1.5rem;
     }
-
+    
 }
 
 /* Small devices */
@@ -879,6 +880,10 @@ footer {
         align-items: center;
         margin-top: 10rem;
     }
+    
+    #noticias article h1  {
+        text-align: center;
+    }
     #noticias article .thumbnail {
         position: absolute;
         top: -10rem;
@@ -888,6 +893,7 @@ footer {
     
     #noticias article .leer-mas {
         position: static;
+        margin: 0 auto;
     }
 }
 

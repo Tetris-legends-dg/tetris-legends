@@ -16,6 +16,7 @@ $(document).ready( function() {
             $("button[type=submit]").html("Registrarme");
             $('input[name="password"]').attr("pattern", ".{8,15}");
             $('input[name="password"]').prev("label").html("Contraseña <small>(entre 8 y 15 caracteres)</small>");
+            $("#password+p.error").hide();
         } else {
             $('input[name="password"]').removeAttr("pattern");
             $("#pregunta").html("¿Aún no registrado?");
@@ -27,18 +28,30 @@ $(document).ready( function() {
         }
     });
     
-    comprobarNombreUsado();
+    
+    if (window.location.href.indexOf("register") != -1 ) {
+        $("#caja-login a").click();
+    }
+    
+    users = localStorage.getItem("users");
+    if (users === null) {
+        users = JSON.parse(_SERVIDOR_loadUsers());
+        localStorage.setItem("users", JSON.stringify(users));
+    }
+    
 });
 
 
 
 var errores = {};
-
+var users;
 function comprobarNombreUsado () {
     if ( !$("#caja-login").hasClass("registro") ) { return; }
+    
     var nombre = $("#nombre").val();
     
-                     //  HARDCODED
+    //TO DO: sustituir por una llamada AJAX al servidor cuando lo tengamos
+    // disponible.
     var respuesta = _SERVIDOR_nombreUsado(nombre);
     
     if (respuesta == true) {
@@ -94,15 +107,14 @@ function ocultarCargando() {
     $(".cargando").hide();
     $("#caja-login").show();
 }
-/** HARDCODED */
+
+
+/*******************************************************************/
+/***    FUNCIONES DEL SERVIDOR HARDCODED A BORRAR EN UN FUTURO   ***/
+/*******************************************************************/
 function _SERVIDOR_nombreUsado(nombre) {
-    var users = localStorage.getItem("users");
-    if (users === null) {
-        users = JSON.parse(_SERVIDOR_loadUsers());
-        localStorage.setItem("users", JSON.stringify(users));
-    } else {
-        users = JSON.parse(users);
-    }
+    users = JSON.parse(users);
+    
     for (var key in users) {
         if (users.hasOwnProperty(key)) {
             if(nombre.toLowerCase().trim() === key.toLowerCase()) {

@@ -19,11 +19,11 @@
         <span>T</span><span>E</span><span>T</span><span>R</span><span>I</span><span>S</span>
         <span>L</span><span>E</span><span>G</span><span>E</span><span>N</span><span>D</span><span>S</span>
     </a></h1>
-    <div class="cargando"><div></div><div></div><div></div><div></div></div>
+    <div class="cargando" style="display: none;"><div></div><div></div><div></div><div></div></div>
 
     <form id="caja-login" onsubmit="return controlFormulario()">
         <label for="nombre" >Nombre</label>
-        <input id="nombre" onchange="comprobarNombreUsado()" type="text" pattern="[A-Za-z0-9_-]{2,15}" maxlength="14" required>
+        <input id="nombre" onchange="comprobarNombreUsado()" type="text" pattern="[A-Za-z0-9_-]{2,14}" maxlength="14" required>
         <p class="error">El nombre introducido ya está en uso</p>
         <label for="email" class="registro">Email</label>
         <input id="email" type="email" class="registro">
