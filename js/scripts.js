@@ -40,15 +40,9 @@ function pedirPaginaNoticias(pagina, callback) {
             type: "GET",
             dataType: "json",
             data: { page: pagina, pagelimit: 4 },
-            success: function(data) {
-                $(".cargando").hide();
-                callback(data);
-            },
+            success: function(respuesta) { callback(respuesta); },
             error: function(jqXHR, textStatus, errorThrown) {
-                alert("ERROR AL CARGAR NOTICIAS (TO DO: mostrar el error en página, no con este alert)")   
-                alert(jqXHR);
-                alert(textStatus);
-                alert(errorThrown);
+                // TO DO: MOSTRAR ERROR
             }
         });
     }, 1000);
@@ -76,6 +70,7 @@ function _templateNoticia(noticia, indexPage) {
     return article;
 }
 function cargarPagina(datos) {
+    $(".cargando").hide();
     var cont = $("#noticias");
     datos.noticias.reverse();
     datos.noticias.forEach(function(noticia) {
@@ -86,6 +81,7 @@ function cargarPagina(datos) {
     actualizarPaginacion(datos.pagina, datos.total);
 }
 function cargarNoticiasInicio(datos) {
+    $(".cargando").hide();
     var noticiaPrincipal = _templateNoticia(datos.noticias[0], true);
     $("#ultimas-noticias").prepend(noticiaPrincipal).find("article").attr("id", "noticia-principal").hide().fadeIn(500);
     
