@@ -41,7 +41,7 @@
   #######################################*/
 @font-face {
     font-family: 'Block Stock Regular';
-    src: url('../blockstock.ttf');
+    src: url('blockstock.ttf');
 }
 
 
@@ -461,7 +461,7 @@ aside {
 
 .widget.partido-directo {
     background: #311;
-    background-image: url("../img/fondo1.jpg");
+    background-image: url("fondo1.jpg");
     background-size: cover;
     cursor: pointer;
 }
@@ -703,31 +703,31 @@ footer {
 #noticias .leer-mas:hover {
     background: #333b;
 }
-#noticias article:nth-child(1){
+#noticias > article:nth-child(1){
     background: #552; /* Old browsers */
 }
-#noticias article:nth-child(1) .leer-mas {
+#noticias > article:nth-child(1) .leer-mas {
     border: 0.4rem solid #995f;
     color: #ffa;
 }
-#noticias article:nth-child(2){
+#noticias > article:nth-child(2){
     background: #353; /* Old browsers */
 }
-#noticias article:nth-child(2) .leer-mas {
+#noticias > article:nth-child(2) .leer-mas {
     border: 0.4rem solid #595f;
     color: #afa;
 }
-#noticias article:nth-child(3){
+#noticias > article:nth-child(3){
     background: #533; /* Old browsers */
 }
-#noticias article:nth-child(3) .leer-mas {
+#noticias > article:nth-child(3) .leer-mas {
     border: 0.4rem solid #955f;
     color: #faa;
 }
-#noticias article:nth-child(4){
+#noticias > article:nth-child(4){
     background: #335; /* Old browsers */
 }
-#noticias article:nth-child(4) .leer-mas {
+#noticias > article:nth-child(4) .leer-mas {
     border: 0.4rem solid #648f;
     color: #a9e;
 }

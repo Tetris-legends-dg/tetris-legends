@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<div id="main-container">
   <div id="page-content">
     <section id="noticias">
       <% @blogs.each do |blog| %>
@@ -16,8 +15,7 @@
           </div>
           <a href="/blogs/<%= blog.id %>" class="boton leer-mas"><span>L</span><span>E</span><span>E</span><span>R</span> <span>M</span><span>Á</span><span>S</span></a>
         </article>
-        <div id="paginacion"></div>
       <% end %>
+      <%= paginate @blogs %>
     </section>
   </div>
-</div>

@@ -1,2 +1,75 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div id="page-content">
+  <section id="ultimas-noticias">
+
+      <article id="noticia-principal">
+        <a href="/blogs/<%= @first.id %>"><%= image_tag(@first.thumbnail) %></a>
+        <div class="contenido">
+          <h1>
+            <a href="/blogs/<%= @first.id %>"> <%= @first.title %></a>
+          </h1>
+          <p>
+            <%= @first.description %>
+          </p>
+        </div>
+      </article>
+    <div id="noticias-secundarias">
+      <% @rest.each do |notice| %>
+        <article>
+          <a class="thumbnail" href="/blogs/<%= notice.id%>"><%= image_tag(notice.thumbnail) %></a>
+          <div class="contenido">
+            <h1>
+              <a href="/blogs/<%= notice.id %>"><%= notice.title %></a>
+            </h1>
+            <p>
+              <%= notice.description %>
+            </p>
+          </div>
+        </article>
+      <% end %>
+    </div>
+  </section>
+  <section id="ranking-semanal">
+      <h1 class="texto-multicolor"><span>T</span><span>O</span><span>P</span> <span>6</span></h1>
+      <h2>Clasificación individual. <time datetime="2018-10-22/2018-10-28">Semana del 22 al 28 de Octubre</time></h2>
+      <div class="tabla-ranking">
+        <div class="top-user">
+          <div class="posicion">1</div>
+          <%= image_tag("Zixiong.jpg") %>
+          <div class="username">Zixiong Lin</div>
+          <div class="puntuacion">999999</div>
+        </div>
+        <div class="top-user">
+          <div class="posicion">2</div>
+          <%=image_tag("HarryHong.jpg") %>
+          <div class="username">Harry Hong</div>
+          <div class="puntuacion">974168</div>
+        </div>
+        <div class="top-user">
+          <div class="posicion">3</div>
+          <%= image_tag("JonasNeubauer.jpg") %>
+          <div class="username">Jonas Neubauer</div>
+          <div class="puntuacion">968271</div>
+        </div>
+        <div class="top-user">
+          <div class="posicion">4</div>
+          <%= image_tag("AlexVega.png") %>
+          <div class="username">Alexander Vega</div>
+          <div class="puntuacion">861997</div>
+        </div>
+        <div class="top-user">
+          <div class="posicion">5</div>
+          <%= image_tag("JavierSanchezVillar.jpg") %>
+          <div class="username">Javier Sánchez</div>
+          <div class="puntuacion">841284</div>
+        </div>
+        <div class="top-user">
+          <div class="posicion">6</div>
+          <%= image_tag("JeffMoore.jpg") %>
+          <div class="username">Jeff Moore</div>
+          <div class="puntuacion">821481</div>
+        </div>
+      </div>
+
+    </section>
+</div>
+

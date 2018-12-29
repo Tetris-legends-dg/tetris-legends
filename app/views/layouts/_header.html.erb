@@ -1,6 +1,6 @@
 <header>
   <h1>
-      <%= link_to 'home/index', class: 'texto-multicolor' do %>
+      <%= link_to  home_index_path, class: 'texto-multicolor' do %>
       <span>T</span><span>E</span><span>T</span><span>R</span><span>I</span><span>S</span>
       <span>L</span><span>E</span><span>G</span><span>E</span><span>N</span><span>D</span><span>S</span>
       <% end %>
@@ -12,15 +12,27 @@
     <div></div>
   </div>
   <nav>
-    <%= link_to 'Inicio', controller: 'home', action: 'index' %>
+    <%= link_to 'Inicio', home_index_path %>
     <%= link_to "Noticias", blogs_path %>
 
     <a href="#">Jugadores</a>
   </nav>
 
+
   <div id="user-panel">
-    <a href="./login.html">Iniciar sesión</a>
-    <a href="./login.html?register">Regístrate</a>
+    <% if user_signed_in? %>
+      <% if current_user.img == "none" %>
+        <%= image_tag("desconocido.jpg") %>
+      <%end %>
+      Logged in as <strong><%= current_user.name %></strong>.
+      <%= link_to 'Quiero Cambiar', edit_user_registration_path %> |
+      <%= link_to "Cerrar Sessión",  destroy_user_session_path , method: :delete %>
+    <% else %>
+      <%= link_to "Registrate", new_user_registration_path %> |
+      <%= link_to "Iniciar Sesion", new_user_session_path()  %>
+    <% end %>
   </div>
+
+
 </header>
 

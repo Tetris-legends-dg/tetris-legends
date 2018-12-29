@@ -1,0 +1,42 @@
+<div class="page-content">
+  <section id="login">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), id: "caja-login", onsubmit: "return controlFormulario()") do |f| %>
+      <%= devise_error_messages! %>
+
+      <h2>Sign up</h2>
+        <div class="field">
+          <%= f.label :nombre %>
+          <%= f.text_field :name, autofocus:true, autocomplete: "name", id: "nombre" %>
+          <p class="error"></p>
+        </div>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :contraseña %>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password",id: "password", onchage: "comprobarPasswords()" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :"repite la constraseña" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "confirmar-pass" %>
+          <p class="error"></p>
+        </div>
+        <div class="field">
+          <label for="aceptar-tos" class="registro"> Renuncio voluntariamente a mi alma</label>
+          <input id="aceptar-tos" class="registro" type="checkbox">
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Registrarme" %>
+        </div>
+
+    <% end %>
+  </section>
+</div>

@@ -7,13 +7,23 @@
 
     <%= stylesheet_link_tag    'application', media: 'all'%>
     <%= javascript_include_tag 'application' %>
+
   </head>
 
   <body>
     <canvas class="fondo" id="fondo-cuadricula"></canvas>
     <canvas class="fondo" id="awbg-canvas"></canvas>
+
     <%= render "layouts/header" %>
-    <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div id="main-container">
+      <%= yield %>
+      <% unless current_page?('/users/sign_up') || current_page?('/users/sign_in')%>
+        <%=render "layouts/aside" %>
+      <% end %>
+    </div>
+
     <%= render "layouts/footer" %>
   </body>
 
