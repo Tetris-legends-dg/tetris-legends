@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TetrisLegends</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <canvas class="fondo" id="fondo-cuadricula"></canvas>
+    <canvas class="fondo" id="awbg-canvas"></canvas>
+    <%= render "layouts/header" %>
+    <%= yield %>
+    <%= render "layouts/footer" %>
+  </body>
+
+</html>

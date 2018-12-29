@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<div id="main-container">
+  <div id="page-content">
+    <section id="noticias">
+      <% @blogs.each do |blog| %>
+        <article>
+          <a class="thumbnail" href="#"><%= image_tag(blog.thumbnail) %></a>
+          <div class="contenido">
+            <h1>
+              <a href="/blogs/<%= blog.id %>"><%= blog.title %></a>
+            </h1>
+            <p>
+              <%= blog.description %>
+            </p>
+          </div>
+          <a href="/blogs/<%= blog.id %>" class="boton leer-mas"><span>L</span><span>E</span><span>E</span><span>R</span> <span>M</span><span>Á</span><span>S</span></a>
+        </article>
+        <div id="paginacion"></div>
+      <% end %>
+    </section>
+  </div>
+</div>
